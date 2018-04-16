@@ -1,0 +1,52 @@
+package SAP.speech.ai.service;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import SAP.speech.ai.model.Response;
+import SAP.speech.ai.model.User;
+import SAP.speech.ai.model.UserRepository;
+
+@Service
+public class UserService {
+
+	@Autowired
+	private UserRepository repository;
+
+	@Autowired
+	@Transactional
+	public void loadInitUsers() {
+		User u = new User();
+		u.setUserName("test");
+		u.setPassword("test");
+		repository.save(u);
+	}
+
+	public Response verify(String userName, String password) {
+
+		Response rb = new Response();
+		User user = repository.findByUserName(userName);
+		if (user == null || !user.getPassword().equals(password)) {
+			rb.setMsg("用户名或密码错误！");
+		} else {
+			rb.setState(true);
+			rb.setMsg("登录成功！");
+		}
+		return rb;
+	}
+
+	@Transactional
+	public Response register(String userName, String password) {
+		User u = new User();
+		u.setUserName(userName);
+		u.setPassword(password);
+		u = repository.save(u);
+
+		Response rb = new Response();
+		rb.setState(true);
+		rb.setMsg("注册成功！");
+		return rb;
+	}
+}
