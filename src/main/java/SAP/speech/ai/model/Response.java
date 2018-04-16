@@ -10,7 +10,7 @@ public class Response implements Serializable {
 
 	private boolean state = false;
 
-	private Object content = new Object();
+	private Object content;
 
 	public String getMsg() {
 		return msg;

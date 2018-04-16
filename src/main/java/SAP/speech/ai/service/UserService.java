@@ -15,7 +15,7 @@ public class UserService {
 
 	@Autowired
 	private UserRepository repository;
-	
+
 	@Value("${spa.ai.loadmeta}")
 	private boolean isLoad;
 
@@ -45,14 +45,19 @@ public class UserService {
 
 	@Transactional
 	public Response register(String userName, String password) {
-		User u = new User();
-		u.setUserName(userName);
-		u.setPassword(password);
-		u = repository.save(u);
-
+		User u;
+		u = repository.findByUserName(userName);
 		Response rb = new Response();
-		rb.setState(true);
-		rb.setMsg("注册成功！");
+		if (u != null) {
+			rb.setState(false);
+			rb.setMsg("用户名已存在！");
+		} else {
+			u.setUserName(userName);
+			u.setPassword(password);
+			u = repository.save(u);
+			rb.setState(true);
+			rb.setMsg("注册成功！");
+		}
 		return rb;
 	}
 }
