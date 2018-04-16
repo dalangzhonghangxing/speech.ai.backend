@@ -10,6 +10,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +23,14 @@ public class QAService {
 	@Autowired
 	private QARepository repository;
 
+	@Value("${spa.ai.loadmeta}")
+	private boolean isLoad;
+
 	@Autowired
 	@Transactional
 	public void loadInitQA() {
+		if (!isLoad)
+			return;
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new InputStreamReader(

@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +23,13 @@ public class ExamService extends BaseService {
 	@Autowired
 	private ExamRepository repository;
 
+	@Value("${spa.ai.loadmeta}")
+	private boolean isLoad;
+
 	@Autowired
 	private void loadInitExam() {
+		if (!isLoad)
+			return;
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new InputStreamReader(
