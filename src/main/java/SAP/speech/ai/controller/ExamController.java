@@ -19,13 +19,13 @@ public class ExamController {
 	@Autowired
 	private ExamService service;
 
-	@RequestMapping(value = PREFIX + "test-paper", method = GET)
+	@RequestMapping(value = PREFIX + "/test-paper", method = GET)
 	@ResponseBody
 	public Response getExams(@RequestParam(defaultValue = "10") int size) {
 		return service.getExams(size);
 	}
 
-	@RequestMapping(value = PREFIX + "answer", method = POST)
+	@RequestMapping(value = PREFIX + "/answer", method = POST)
 	@ResponseBody
 	public Response getAnswer(@RequestParam String answer[]) {
 		return service.getAnswer(answer);
