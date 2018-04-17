@@ -1,12 +1,16 @@
 question,A,B,C,D,answer
-Question1,a,b,c,d,a
-Question2,a,b,c,d,b
-Question3,a,b,c,d,c
-Question4,a,b,c,d,d
-Question5,a,b,c,d,a
-Question6,a,b,c,d,b
-Question7,a,b,c,d,c
-Question8,a,b,c,d,d
-Question9,a,b,c,d,a
-Question910,a,b,c,d,b
-Question911,a,b,c,d,c
+下列属于容器的组件有（）,JButton,JPanel,Thread,JTextArea,b
+下列关于构造函数的描述中，错误的是（）,构造函数可以设置默认的参数,构造函数在定义类对象时自动执行,构造函数可以是内联函数,构造函数不可以重载,d
+在Java中，负责对字节代码解释执行的是（）,应用服务器,虚拟机,垃圾回收器,编译器,b
+以下哪些不是javascript的全局函数（）,eval,escape,setTimeout,parseFloat,c
+操作系统具有进程管理、存储管理、文件管理和设备管理的功能，在以下有关的描述,设备管理是指计算机系统中除了CPU和内存以外的所有输入、输出设备的管理,存储管理主要是管理内存资源,进程管理主要是对程序进行管理,文件管理可以有效地支持对文件的操作，解决文件共享、保密和保护问题,b
+在UML提供的图中，（  ）用于按时间顺序描述对象间的交互。,协作图,网络图,序列图,状态图,c
+下面有关系统并发访问数估算数据那个最有效：,高峰时段日处理业务量100000,高峰时段平均每秒请求数80,同时在线用户数100,平均每秒用户请求数50,b
+在实现DAO设计模式时，下面哪种模式经常被采用：,Proxy模式,Factory模式,Prototype模式,Observer模式,b
+有关线程的哪些叙述是对的？,一旦一个线程被创建，它就立即开始运行。,当一个线程因为抢先机制而停止运行，它被放在可运行队列的前面。,一个线程可能因为不同的原因停止（cease）并进入就绪状态。,使用start()方法可以使一个线程成为可运行的，但是它不一定立即开始运行。,d
+在ORACLE中Date日期类型,存贮日期和时间信息，占用几个字节,6,10,8,7,d
+下面哪个Set是排序的？,LinkedHashSet,HashSet,AbstractSet,TreeSet,a
+类的实例方法表示的是什么？,父类对象的行为,类的属性,类对象的行为,类的行为,c
+下面说法正确的是,JAVA中线程是非抢占式的,JAVA中的线程不可以共享数据,每个JAVA程序都至少有一个线程，即主线程,JAVA中的线程不可以共享代码,c
+transient 变量和下面哪一项有关？,Cloneable,Serializable,Runnable,Throwable,b
+在ORACLE中，下面哪个符号可以放到一个文件中的一行前面来标示注释。,!,&,$,#,c
