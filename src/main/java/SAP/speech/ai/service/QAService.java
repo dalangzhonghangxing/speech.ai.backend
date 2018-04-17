@@ -32,7 +32,7 @@ public class QAService {
 	@Value("${spa.ai.loadmeta}")
 	private boolean isLoad;
 
-	private Map<String, Long> keyWordsMapping = new HashMap<>();
+	private Map<String, List<Long>> keyWordsMapping = new HashMap<>();
 
 	@Autowired
 	@Transactional
@@ -58,7 +58,9 @@ public class QAService {
 				}
 				String[] keyWords = values[1].split(";");
 				for (String keyWord : keyWords) {
-					keyWordsMapping.put(keyWord, qa.getId());
+					List<Long> l = keyWordsMapping.getOrDefault(keyWord, new ArrayList<>());
+					l.add(qa.getId());
+					keyWordsMapping.put(keyWord, l);
 				}
 			}
 		} catch (IOException e) {
@@ -78,23 +80,20 @@ public class QAService {
 
 		for (Word w : words) {
 			if (keyWordsMapping.get(w.toString()) != null) {
-				ids.add(keyWordsMapping.get(w.toString()));
+				ids.addAll(keyWordsMapping.get(w.toString()));
 			}
 		}
 
 		List<QA> answer = repository.findAll(ids);
-		List<Map<String, String>> answers = new ArrayList<>();
-
+		StringBuffer answers = new StringBuffer();
 		for (QA qa : answer) {
-			Map<String, String> ans = new HashMap<>();
-			ans.put(qa.getQuestion(), qa.getAnswer());
-			answers.add(ans);
+			answers.append(qa.getQuestion()).append(":").append(qa.getAnswer() + ". ");
 		}
 
 		Response res = new Response();
-		if (answers.size() > 0) {
+		if (answer.size() > 0) {
 			res.setState(true);
-			res.setContent(answers);
+			res.setContent(answers.toString());
 			res.setMsg("找到答案!");
 		} else {
 			res.setState(true);
