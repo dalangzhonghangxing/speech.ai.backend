@@ -34,7 +34,7 @@ public class QA extends EntityId {
 		this.key_words = key_words;
 	}
 
-	public String getAnswers() {
+	public String getAnswer() {
 		return answer;
 	}
 

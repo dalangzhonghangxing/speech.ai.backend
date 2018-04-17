@@ -12,4 +12,6 @@ public interface QARepository extends JpaRepository<QA, Long> {
 	@Query("select answer from QA where question = ?1")
 	public String findAnswer(String question);
 
+	public QA findByQuestion(String string);
+
 }
