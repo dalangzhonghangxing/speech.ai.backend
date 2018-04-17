@@ -24,7 +24,7 @@ public class App {
 	/**
 	 * 跨域过滤器
 	 */
-	@Bean
+	//@Bean
 	public CorsFilter corsFilter() {
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", buildConfig()); // 4
