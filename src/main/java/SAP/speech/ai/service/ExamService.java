@@ -97,9 +97,14 @@ public class ExamService extends BaseService {
 		HttpSession session = getSession();
 		Response res = new Response();
 		List<String> answers = (List<String>) session.getAttribute("answers");
+		if(answers == null) {
+			res.setState(true);
+			res.setMsg("未获取考题或登陆过期！");
+			return res;
+		}
 		int score = 0;
 		for (int i = 0; i < answers.size(); i++) {
-			if (answers.get(i).equals(answer[i]))
+			if (answers.get(i).toLowerCase().equals(answer[i].toLowerCase()))
 				score++;
 		}
 		res.setContent(Integer.valueOf(score));

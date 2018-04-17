@@ -52,6 +52,7 @@ public class UserService {
 			rb.setState(false);
 			rb.setMsg("用户名已存在！");
 		} else {
+			u = new User();
 			u.setUserName(userName);
 			u.setPassword(password);
 			u = repository.save(u);
